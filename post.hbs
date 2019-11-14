@@ -50,11 +50,11 @@ into the {body} of the default.hbs template --}}
                                         <div class="bio">
                                             <h2>{{name}}</h2>
                                             <p>{{bio}}</p>
-                                            <p><a href="{{url}}">More posts</a> by {{name}}.</p>
+                                            <p><a href="{{url}}">Les articles</a> de {{name}}.</p>
                                         </div>
                                         {{else}}
                                         <h2>{{name}}</h2>
-                                        <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+                                        <p>Lire <a href="{{url}}">plus d'articles</a> de cet auteur.</p>
                                         {{/if}}
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@ into the {body} of the default.hbs template --}}
                             <h4 class="author-name">{{authors}}</h4>
                             <div class="byline-meta-content">
                                 <time class="byline-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time>
-                                <span class="byline-reading-time"><span class="bull">&bull;</span> {{reading_time}}</span>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> {{reading_time minute="1 minute de lecture" minutes="% minutes de lecture"}}</span>
                             </div>
                         </section>
 
@@ -114,11 +114,21 @@ into the {body} of the default.hbs template --}}
                 {{> subscribe-form}}
             {{/if}}
 
-            {{!--
             <section class="post-full-comments">
-                If you want to embed comments, this is a good place to do it!
+                <div id="disqus_thread"></div>
+                <script>
+                var disqus_config = function () {
+                this.page.url = "https://www.ericlarcheveque.com";
+                this.page.identifier = "ghost-{{comment_id}}";
+                };
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://le-blog-deric-larcheveque.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
             </section>
-            --}}
 
         </article>
 
@@ -135,7 +145,7 @@ into the {body} of the default.hbs template --}}
                 <article class="read-next-card">
                     <header class="read-next-card-header">
                         {{#../primary_tag}}
-                        <h3><span>More in</span> <a href="{{url}}">{{name}}</a></h3>
+                        <h3><span>Articles </span> <a href="{{url}}">{{name}}</a></h3>
                         {{/../primary_tag}}
                     </header>
                     <div class="read-next-card-content">
@@ -145,14 +155,14 @@ into the {body} of the default.hbs template --}}
                                 <h4><a href="{{url}}">{{title}}</a></h4>
                                 <div class="read-next-card-meta">
                                     <p><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> –
-                                        {{reading_time}}</p>
+                                        {{reading_time minute="1 minute de lecture" minutes="% minutes de lecture"}}</p>
                                 </div>
                             </li>
                             {{/foreach}}
                         </ul>
                     </div>
                     <footer class="read-next-card-footer">
-                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}}
+                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='Aucun article' singular='% article' plural='Voir les % articles'}}
                             →</a>
                     </footer>
                 </article>
