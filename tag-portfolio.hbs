@@ -5,40 +5,49 @@
     {{> site-header}}
     {{> header-background background=feature_image}} {{!--Special header-image.hbs partial to generate the background image--}}
         <div class="inner site-header-content">
-            <h1 class="site-title">Portfolio d'investissement</h1>
+            <h1 class="site-title">Portefeuille de participations</h1>
             <h2 class="site-description">
-                Voici la liste complète des sociétés dans lesquels j'ai investi, que ce soit via une création directe où je suis cofondateur, via mon activité de business angel, ou via l'émission elle même.
+                Voici la liste complète des sociétés dans lesquels j'ai investi, que ce soit en tant que cofondateur, business angel, ou via "Qui veut-être mon associé ?".
             </h2>
+            <div class="portfolio-navigation">
+                <div id="filters" class="button-group">
+                    <button class="btn is-checked" data-filter="*">Tout</button>
+                    <button class="btn" data-filter=".cofounder">Cofondateur</button>
+                    <button class="btn" data-filter=".ba">Business Angel</button>
+                    <button class="btn" data-filter=".qvema">Qui veut être mon associé ?</button>
+                </div>
+            </div>
         </div>
     </div>
 </header>
 {{/tag}}
 
-<main>
-    <div class="portfolio-navigation">
-        <div id="filters" class="button-group">
-            <button class="btn is-checked" data-filter="*">Tout</button>
-            <button class="btn" data-filter=".qvema">Qui veut être mon associé ?</button>
-            <button class="btn" data-filter=".cofounder">Cofondateur</button>
-            <button class="btn" data-filter=".ba">Business Angel</button>
+{{!-- The main content area --}}
+<main id="site-main" class="site-main outer">
+    <div class="inner posts">
+        <div class="grid">
+            {{#get "pages" limit="all" include="tags" filter="tag:portfolio"}}
+                {{#foreach pages}}
+                    <a href="/{{slug}}" class="{{tags separator=" " autolink="false"}}">
+                        <div class="portfolio-image">
+                            <img src="{{img_url feature_image size="s"}}"></img>
+                        </div>
+                        <div class="hover">
+                            <h2 class="name">{{title}}</h2>
+                            <span class="c_tag">
+                                {{#has tag="ba"}}Business Angel{{/has}}
+                                {{#has tag="cofounder"}}Cofondateur{{/has}}
+                                {{#has tag="qvema"}}Qui veut être mon associé{{/has}}
+                            </span>
+                            <br>
+                            <span class="c_tag">
+                                {{date published_at format="MMMM YYYY"}}
+                            </span>
+                        </div>
+                    </a>
+                {{/foreach}}
+            {{/get}}
         </div>
-    </div>
-
-    <div class="grid">
-        {{#get "pages" limit="all" include="tags" filter="tag:portfolio"}}
-            {{#foreach pages}}
-                <a href="/{{slug}}" class="{{tags separator=" " autolink="false"}}">
-                    <div class="portfolio-thumb"></div>
-                    <h2 class="name">{{title}}</h2>
-                    <span class="investment" id="{{id}}-1"></span>
-                    <span class="capital" id="{{id}}-2"></span>
-                    <script>
-                      document.getElementById("{{id}}-1").innerHTML = "{{excerpt}}".split(',')[0];
-                      document.getElementById("{{id}}-2").innerHTML = "{{excerpt}}".split(',')[1];
-                    </script>
-                </a>
-            {{/foreach}}
-        {{/get}}
     </div>
 </main>
 
@@ -48,10 +57,7 @@
 
     var $grid = $('.grid').isotope({
       itemSelector: '.portfolio',
-      percentPosition: true,
-      masonry: {
-        columnWidth: 200
-      }
+      layoutMode: 'fitRows'
     });
 
     // bind filter button click

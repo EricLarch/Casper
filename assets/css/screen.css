@@ -3013,36 +3013,69 @@ Usage (In Ghost editor):
 }
 
 .btn:hover, .btn.active {
-    border-color: rgba(0,0,0,.67);
-    background-color: rgba(0,0,0,.1);
-}
-
-.btn.portfolio-navigation {
-    margin: 0 2px 5px 2px;
-    padding: 0 10px;
-    height: 33px;
-    font-size: 10px;
-    text-transform: uppercase;
+    border-color: black;
+    background-color: black;
+    color: #fff !important;
 }
 
 .btn {
-    height: 24px;
+    margin: 0 2px 5px 2px;
+    padding: 0 10px;
+    font-size: 10px;
+    text-transform: uppercase;
     font-weight: normal !important;
     font-size: 14px;
-    border-radius: 4px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-transition: background-color ease 0.3s;
-    -webkit-transition: background-color ease 0.3s;
-    transition: background-color ease 0.3s;
-    border: 1px solid rgba(0,0,0,.33);
+    border: 1px solid black;
     -webkit-text-decoration: none !important;
     text-decoration: none !important;
-    color: #333 !important;
+    color: black !important;
     cursor: pointer;
     white-space: nowrap;
-    padding: 10px;
+    padding: 5px;
     outline: none;
+}
+
+.is-checked {
+    color: #fff !important;
+    background-color: black;
+}
+
+.portfolio-navigation {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.portfolio-image {
+    width: 300px;
+    height: 170px;
+    display: block;
+    transition: .3s ease;
+}
+
+.portfolio .hover {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    display: table-cell;
+    vertical-align: middle;
+    outline: 1px solid black;
+    outline-offset: -10px;
+}
+.portfolio .hover .name {
+    color: black;
+}
+
+.portfolio:hover .hover {
+    opacity: 1;
+}
+
+.portfolio:hover .portfolio-image {
+    opacity: 0.08;
 }
 
 .filters {
@@ -3051,21 +3084,74 @@ Usage (In Ghost editor):
 }
 
 .grid {
-  background: #DDD;
-  max-width: 1200px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .grid:after {
-  content: '';
-  display: block;
-  clear: both;
+    content: '';
+    display: block;
+    clear: both;
 }
 
 .portfolio {
-  float: left;
-  width: 200px;
-  height: 200px;
-  background: #0D8;
-  border: 2px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.7);
+    float: left;
+    width: 300px;
+    height: 170px;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+}
+
+.right {
+    text-align: right;
+}
+
+.c_year {
+}
+
+.c_tag {
+    text-transform: uppercase;
+    margin: 0;
+    color: #fff;
+    background-color: #6c757d;
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+    .portfolio .hover {
+        outline: 1px solid white;
+    }
+    .portfolio .hover .name {
+        color: white;
+    }
+    .btn:hover, .btn.active {
+        border-color: white;
+        background-color: white;
+        color: black !important;
+    }
+    .btn {
+        border: 1px solid white;
+        color: white !important;
+        background-color: black;
+    }
+    .is-checked {
+        color: black !important;
+        background-color: white;
+    }
 }
