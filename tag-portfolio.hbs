@@ -15,6 +15,7 @@
                     <button class="btn" data-filter=".cofounder">Cofondateur</button>
                     <button class="btn" data-filter=".ba">Business Angel</button>
                     <button class="btn" data-filter=".qvema">Qui veut être mon associé ?</button>
+                    <button class="btn" data-filter=".exited">Participations cédées</button>
                 </div>
             </div>
         </div>
@@ -38,6 +39,7 @@
                                 {{#has tag="ba"}}Business Angel{{/has}}
                                 {{#has tag="cofounder"}}Cofondateur{{/has}}
                                 {{#has tag="qvema"}}Qui veut être mon associé{{/has}}
+                                {{#has tag="exited"}}Participation cédée{{/has}}
                             </span>
                             <br>
                             <span class="c_tag">
@@ -56,8 +58,12 @@
     // init Isotope
 
     var $grid = $('.grid').isotope({
-      itemSelector: '.portfolio',
-      layoutMode: 'fitRows'
+        itemSelector: '.portfolio',
+        layoutMode: 'masonry',
+        masonry: {
+            columnWidth: 300,
+            gutter: 10
+        }
     });
 
     // bind filter button click
@@ -73,6 +79,13 @@
             $buttonGroup.find('.is-checked').removeClass('is-checked');
             $(this).addClass('is-checked');
         });
+    });
+
+    // Cas particulier d'affichage
+    $(".name").each(function (i, e) {
+        if ($(e).html() == "Permettez-moi de construire") {
+            $(e).html("Permettez-moi<br>de construire");
+        }
     });
 </script>
 {{/contentFor}}
