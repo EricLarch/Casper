@@ -1814,6 +1814,7 @@ Usage (In Ghost editor):
 .post-full-comments {
     margin: 0 auto;
     max-width: 840px;
+    margin-top: 60px;
 }
 
 
@@ -3133,6 +3134,122 @@ Usage (In Ghost editor):
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.contact-form {
+    margin: 1.5em 0;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin: 0 auto;
+    max-width: 460px;
+}
+
+.contact-form label {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    max-width: 650px;
+    color: black;
+    font-size: 2.2rem;
+    line-height: 1.3em;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.contact-form input, textarea {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    border: color(var(--lightgrey) l(+7%)) 1px solid;
+    color: var(--midgrey);
+    font-size: 1.8rem;
+    line-height: 1em;
+    font-weight: normal;
+    user-select: text;
+    border-radius: 5px;
+    transition: border-color 0.15s linear;
+    -webkit-appearance: none;
+}
+
+.contact-form input:focus, textarea:focus {
+    outline: 0;
+    border-color: color(var(--lightgrey) l(-2%));
+}
+
+.contact-form button {
+    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 43px;
+    outline: none;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 39px;
+    font-weight: 400;
+    text-align: center;
+    background: linear-gradient(
+    color(var(--blue) whiteness(+7%)),
+    color(var(--blue) lightness(-7%) saturation(-10%)) 60%,
+    color(var(--blue) lightness(-7%) saturation(-10%)) 90%,
+    color(var(--blue) lightness(-4%) saturation(-10%))
+    );
+    border-radius: 5px;
+
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.contact-form button:active,
+.contact-form button:focus {
+    background: color(var(--blue) lightness(-9%) saturation(-10%));
+}
+
+.contact-form .button-loader,
+.contact-form .message-success,
+.contact-form .message-error {
+    display: none;
+}
+
+.contact-form .loading .button-content {
+    visibility: hidden;
+}
+
+.contact-form .loading .button-loader {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: inline-block;
+    margin-left: -19px;
+    transform: scale(0.7);
+}
+
+.contact-form .button-loader svg path,
+.contact-form .button-loader svg rect {
+    fill: #fff;
+}
+
+.contact-form .success .message-success,
+.contact-form .error .message-error {
+    margin: 1em auto 0;
+    max-width: 400px;
+    color: var(--red);
+    font-size: 1.6rem;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.contact-form .success .message-success {
+    display: block;
+    color: color(var(--green) l(-5%));
+}
+
+.contact-form .error .message-error {
+    display: block;
+}
+
 @media (prefers-color-scheme: dark) {
     .portfolio .hover {
         outline: 1px solid white;
@@ -3153,5 +3270,8 @@ Usage (In Ghost editor):
     .is-checked {
         color: black !important;
         background-color: white;
+    }
+    .contact-form label {
+        color: #fff;
     }
 }

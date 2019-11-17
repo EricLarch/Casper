@@ -1,0 +1,102 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{!-- The big featured header, it uses blog cover image as a BG if available --}}
+<header class="site-header">
+    <div class="outer site-nav-main">
+        <div class="inner">
+            {{> "site-nav"}}
+        </div>
+    </div>
+</header>
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full {{post_class}} {{#unless feature_image}}no-image{{/unless}}">
+
+            <header class="post-full-header">
+                <h1 class="post-full-title">{{title}}</h1>
+                <div class="post-full-custom-excerpt">
+                    {{content}}
+                </div>
+
+               <div class="contact-form">
+                    <form class="ajaxForm" action="https://formcarry.com/s/p3dROupdh_l" method="POST">
+                        <label>
+                            Votre nom
+                        </label>
+                        <input type="text" name="name" required="">
+                        <label>
+                            Votre email
+                        </label>
+                        <input type="email" name="email" required="">
+                        <label>
+                            Votre message
+                        </label>
+                        <textarea name="message" rows=10 required=""></textarea>
+                        <input type="hidden" name="_gotcha">
+                        <button class="button primary" type="submit">
+                            <span class="button-content">Envoyer le message</span>
+                            <span class="button-loader">{{> "icons/loader"}}</span>
+                        </button>
+                        <div class="message-success">
+                            <strong>Merci pour votre message !</strong> 
+                            <br>
+                            Je ferai de mon mieux pour y répondre au plus vite.
+                        </div>
+                        <div class="message-error">
+                            <strong>Erreur !</strong> 
+                            <br>
+                            Votre message n'a pas été transmis. Merci de réessayer plus tard.
+                        </div>
+                    </form>
+                </div>
+
+            </header>
+
+        </article>
+
+    </div>
+</main>
+
+{{/post}}
+
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+<script>
+    $(function() {
+        var $postContent = $(".post-full-content");
+        $postContent.fitVids();
+        $(".ajaxForm").submit(function(e){
+            $("#send").attr("disabled", true);
+            $(".ajaxForm").addClass("loading");
+            $(".ajaxForm").removeClass("success")
+            $(".ajaxForm").removeClass("error")
+            e.preventDefault();
+            var href = $(this).attr("action");
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: href,
+                data: $(this).serialize(),
+                success: function(response){
+                    $("#send").attr("disabled", false);
+                    $(".ajaxForm").removeClass("loading");
+                    if (response.status == "success"){
+                        $(".ajaxForm").trigger("reset");
+                        $(".ajaxForm").addClass("success")
+                    } else {
+                        $(".ajaxForm").addClass("error")
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+{{/contentFor}}
