@@ -1,19 +1,62 @@
 <section class="subscribe-form">
     <h3 class="subscribe-form-title">Abonnez-vous !</h3>
     <p class="subscribe-form-description">Recevez tous les articles immédiatement après leur parution.</p>
-    <form data-members-form="subscribe">
+    <form action="https://ericlarcheveque.us5.list-manage.com/subscribe/post-json?u=324ff765144b71f1ac40f04db&id=1bed7643e1&c=?" method="post" id="mc-embedded-subscribe-form">
         <div class="form-group">
-            <input class="subscribe-email" data-members-email placeholder="monemail@gmail.com" autocomplete="false" />
-            <button class="button primary" type="submit">
+            <input class="subscribe-email" name="EMAIL" type="email" id="email-form" placeholder="monemail@gmail.com" autocomplete="false" required />
+            <button class="button primary" type="submit" id="submit-form">
                 <span class="button-content">S'abonner</span>
                 <span class="button-loader">{{> "icons/loader"}}</span>
             </button>
         </div>
         <div class="message-success">
-            <strong>C'est fait !</strong> Vérifiez votre boite aux lettres et cliquez sur le lien pour confirmer votre abonnement.
+            <strong>Merci !</strong> Un email de confirmation vous a été envoyé.
         </div>
         <div class="message-error">
-            Merci d'entrer un email valide !
+            Une erreur s'est produite. Peut-être êtes vous déjà abonné ?
         </div>
     </form>
 </section>
+
+{{#contentFor "scripts"}}
+<script>
+    $(function() {
+        var $form = $('#mc-embedded-subscribe-form');
+        $('#submit-form').bind('click', function (event) {
+            event.preventDefault();
+            if (isValidEmailAddress($("#email-form").val())) { 
+                register($form);
+                $(".message-error").hide();
+                $(".message-success").hide();
+            }
+        });
+    })
+
+    function register($form) {
+        $(".button-content").hide();
+        $(".button-loader").show();
+        $.ajax({
+            type: $form.attr('method'),
+            url: $form.attr('action'),
+            data: $form.serialize(),
+            cache: false,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            error: function (err) { 
+                $(".button-content").show();
+                $(".button-loader").hide();
+                $(".message-error").show();
+            },
+            success: function (data) {
+                $(".button-content").show();
+                $(".button-loader").hide();
+                if (data.result === 'success') {
+                    $(".message-success").show();
+                } else {
+                    $(".message-error").show();
+                }
+            }
+        });
+    }
+</script>
+{{/contentFor}}

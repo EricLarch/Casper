@@ -24,11 +24,7 @@
             {{/if}}
             <a class="social-link social-link-tw" href="https://www.linkedin.com/in/ericlarch/" title="Linked In" target="_blank" rel="noopener">{{> "icons/linkedin"}}</a>
         </div>
-        {{#if @labs.members}}
-            <a class="subscribe-button" href="#subscribe">S'abonner</a>
-        {{else}}
-            <a class="rss-button" href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
-        {{/if}}
+        <a class="subscribe-button" href="#subscribe">S'abonner</a>
         <div class="social-links">
             <a href=# id="dark-switch" class="social-link" title="Thème jour / nuit">
                 <div class="dark-icon" id="sun">{{> "icons/sun"}}</div><div class="dark-icon" id="moon">{{> "icons/moon"}}</div>

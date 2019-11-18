@@ -40,8 +40,6 @@
 
     </div>
 
-    {{!-- The big email subscribe modal content --}}
-    {{#if @labs.members}}
     <div class="subscribe-success-message">
         <a class="subscribe-close" href="javascript:;"></a>
         Vous êtes désormais abonné à {{@site.title}}!
@@ -56,25 +54,24 @@
             <div class="subscribe-form">
                 <h1 class="subscribe-overlay-title">Abonnez-vous !</h1>
                 <p class="subscribe-overlay-description">Recevez tous les articles<br>immédiatement après leur parution.</p>
-                <form data-members-form="subscribe">
+                <form action="https://ericlarcheveque.us5.list-manage.com/subscribe/post-json?u=324ff765144b71f1ac40f04db&id=1bed7643e1&c=?" method="post" id="mc-embedded-subscribe-form-popup">
                     <div class="form-group">
-                        <input class="subscribe-email" data-members-email placeholder="monemail@gmail.com"
-                            autocomplete="false" />
-                        <button class="button primary" type="submit">
+                        <input class="subscribe-email" id="email-form-popup" name="EMAIL" type="email" placeholder="monemail@gmail.com" autocomplete="false" required/>
+                        <button class="button primary" type="submit" id="submit-form-popup">
                             <span class="button-content">S'abonner</span>
                             <span class="button-loader">{{> "icons/loader"}}</span>
                         </button>
                     </div>
                     <div class="message-success">
-                        <strong>Merci !</strong> Vérifiez votre boite aux lettres et cliquez sur le lien pour confirmer votre abonnement.
+                        <strong>Merci !</strong> Un email de confirmation vous a été envoyé.
+                    </div>
                     <div class="message-error">
-                        Merci d'entrer un email valide !
+                        Une erreur s'est produite. Peut-être êtes vous déjà abonné ?
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    {{/if}}
 
     {{!-- jQuery, required for fitvids --}}
     <script
@@ -84,6 +81,47 @@
     </script>
     {{!-- Fitvids (for responsive video embeds), infinite scroll, floating header, and gallery card support --}}
     <script src="{{asset "built/casper.js"}}"></script>
+
+    <script>
+        $(function() {
+            var $form = $('#mc-embedded-subscribe-form-popup');
+            $('#submit-form-popup').bind('click', function (event) {
+                event.preventDefault();
+                if (isValidEmailAddress($("#email-form-popup").val())) { 
+                    register($form);
+                    $(".message-error").hide();
+                    $(".message-success").hide();
+                }
+            });
+        })
+
+        function register($form) {
+            $(".button-content").hide();
+            $(".button-loader").show();
+            $.ajax({
+                type: $form.attr('method'),
+                url: $form.attr('action'),
+                data: $form.serialize(),
+                cache: false,
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                error: function (err) { 
+                    $(".button-content").show();
+                    $(".button-loader").hide();
+                    $(".message-error").show();
+                },
+                success: function (data) {
+                    $(".button-content").show();
+                    $(".button-loader").hide();
+                    if (data.result === 'success') {
+                        $(".message-success").show();
+                    } else {
+                        $(".message-error").show();
+                    }
+                }
+            });
+        }
+    </script>
 
     {{!-- Scripts for Members subscription --}}
     <script>
@@ -96,6 +134,10 @@
             if (!results) return null;
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        function isValidEmailAddress(emailAddress) {
+            var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+            return pattern.test(emailAddress);
         }
 
         // Give the parameter a variable name
