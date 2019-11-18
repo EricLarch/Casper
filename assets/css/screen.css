@@ -2811,7 +2811,7 @@ Usage (In Ghost editor):
 }
 
 [data-theme="dark"] .post-card,
-.post-card:hover {
+[data-theme="dark"] .post-card:hover {
     border-bottom-color: color(var(--darkmode) l(+8%));
 }
 
@@ -2840,13 +2840,13 @@ Usage (In Ghost editor):
 }
 
 [data-theme="dark"] .author-avatar,
-.static-avatar {
+[data-theme="dark"].static-avatar {
     border-color: color(var(--darkgrey) l(+2%));
 }
 
 [data-theme="dark"] .site-main,
-.post-template .site-main,
-.page-template .site-main {
+[data-theme="dark"] .post-template .site-main,
+[data-theme="dark"] .page-template .site-main {
     background: var(--darkmode);
 }
 
@@ -2892,10 +2892,10 @@ Usage (In Ghost editor):
 }
 
 [data-theme="dark"] .post-full-content h1,
-.post-full-content h2,
-.post-full-content h3,
-.post-full-content h4,
-.post-full-content h6 {
+[data-theme="dark"] .post-full-content h2,
+[data-theme="dark"] .post-full-content h3,
+[data-theme="dark"] .post-full-content h4,
+[data-theme="dark"] .post-full-content h6 {
     color: rgba(255, 255, 255, 0.9);
 }
 
@@ -2939,12 +2939,12 @@ Usage (In Ghost editor):
 }
 
 [data-theme="dark"] .post-full-content table th,
-.post-full-content table td {
+[data-theme="dark"] .post-full-content table td {
     border: color(var(--darkmode) l(+8%)) 1px solid;
 }
 
 [data-theme="dark"] .post-full-content .kg-bookmark-container,
-.post-full-content .kg-bookmark-container:hover {
+[data-theme="dark"] .post-full-content .kg-bookmark-container:hover {
     color: rgba(255, 255, 255, 0.75);
     box-shadow: 0 0 1px rgba(255,255,255,0.9);
 }
@@ -3002,7 +3002,7 @@ Usage (In Ghost editor):
 }
 
 [data-theme="dark"] .subscribe-form .invalid .message-error,
-.subscribe-form .error .message-error {
+[data-theme="dark"] .subscribe-form .error .message-error {
     color: color(var(--red) l(+5%) s(-5%));
 }
 
