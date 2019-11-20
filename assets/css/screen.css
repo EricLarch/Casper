@@ -261,6 +261,23 @@ body {
     }
 }
 
+@media (min-width: 1041px) {
+    .grid {
+        width: 920px;
+    }
+}
+@media (max-width: 1040px) {
+    .grid {
+        width: 610px;
+    }
+}
+@media (max-width: 720px) {
+    .grid {
+        width: 300px;
+    }
+}
+
+
 
 /* 5. Site Navigation
 /* ---------------------------------------------------------- */
@@ -561,6 +578,10 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     }
 
     .site-nav-right {
+        display: none;
+    }
+
+    .image_portfolio {
         display: none;
     }
 }
@@ -3110,6 +3131,8 @@ Usage (In Ghost editor):
 .grid {
     margin-top: 40px;
     margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .grid:after {

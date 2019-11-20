@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting"> <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+    <title>Eric Larchevêque</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+    <style type="text/css">
+        body, table, td {
+            font-family: Helvetica, Arial, sans-serif !important;
+        }
+    </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css">
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            margin: 0 auto !important;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+    </style>
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td-primary:hover,
+        .button-a-primary:hover {
+            background: #007077 !important;
+            border-color: #007077 !important;
+        }
+        .button-td-secondary:hover,
+        .button-a-secondary:hover {
+            background: #cbcbcb !important;
+            border-color: #cbcbcb !important;
+        }
+        .button-td-stroke:hover,
+        .button-a-stroke:hover {
+            background: #e3e3e3 !important;
+        }
+
+        /* media queries */
+        @media only screen and (max-width: 596px) {
+            img {
+                max-width: 100%;
+            }
+            .p-t-0 {
+                padding-top: 0!important;
+            }
+            .p-t-15 {
+                padding-top: 15px!important;
+            }
+            .p-l-r-0 {
+                padding-left: 0!important;
+                padding-right: 0!important;
+            }
+            .p-l-r-15 {
+                padding-left: 15px!important;
+                padding-right: 15px!important;
+            }
+            .block {
+                display: inline-block!important;
+                width: 100%!important;
+                vertical-align: top!important;
+            }
+            .w-100 {
+                width: 100%!important;
+            }
+            .ltr {
+                direction: ltr!important;
+            }
+            .feature-preview {
+                padding: 24px 0 0!important;
+            }
+            .feature-info {
+                padding: 16px 0 24px!important;
+                border-width: 0!important;
+            }
+        }
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+</head>
+<!--
+    The email background color (#f5f5f5) is defined in three places:
+    1. body tag: for most email clients
+    2. center tag: for Gmail and Inbox mobile apps and web versions of Gmail, GSuite, Inbox, Yahoo, AOL, Libero, Comcast, freenet, Mail.ru, Orange.fr
+    3. mso conditional: For Windows 10 Mail
+-->
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f5f5f5">
+    <center style="width: 100%; background-color: #f5f5f5">
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f5f5f5">
+    <tr>
+    <td>
+    <![endif]-->
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: 'PT Sans', sans-serif">
+            EXCERPT
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: 'PT Sans', sans-serif">
+            &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+
+        <!--
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 680px.
+            2. MSO tags for Desktop Windows Outlook enforce a 680px width.
+            Note: The Fluid and Responsive templates have a different width (600px). The hybrid grid is more "fragile", and I've found that 680px is a good width. Change with caution.
+        -->
+        <div style="max-width: 645px; margin: 0 auto; font-family: 'PT Sans', sans-serif" class="email-container">
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="645">
+            <tr>
+            <td>
+            <![endif]-->
+
+            <!-- Email Header : BEGIN -->
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tbody>
+                    <tr>
+                        <td style="padding: 32px 15px 0; font-size: 0">
+                            <a href="#">
+                                <img src="img/logo.png" width="119" alt="">
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 18px 15px 0 45px; font-size: 0">
+                            <img src="img/triangle.png" width="26" alt="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Email Header : END -->
+            
+            <!-- Email Body : BEGIN -->
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="605">
+            <tr>
+            <td>
+            <![endif]-->
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; max-width: 605px">
+                <tbody>
+                    <!-- Hero Image, Flush : BEGIN -->
+                    <tr>
+                        <td class="p-l-r-15 p-t-15" style="padding: 30px 30px 0; background: #ffffff">
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 0 0 48px; font-size: 0">
+                                            <img class="w-100" src="IMAGE" width="545" alt="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-l-r-0" style="padding: 0 40px 48px; text-align: center">
+                                            <p style="margin: 0 0 12px; font-size: 16px; font-weight: bold; letter-spacing: 0.69px; line-height: 24px; text-transform: uppercase">
+                                                <a href="#" style="color: #E5A024">Eric Larchevêque</a>
+                                            </p>
+                                            <h1 style="margin: 0 0 8px; font-size: 44px; color: #242424; line-height: 48px">
+                                                TITLE
+                                            </h1>
+                                            <p style="margin: 0 0 16px; font-size: 20px; color: #767676; line-height: 24px">
+                                                EXCERPT
+                                            </p>
+                                            <!-- Button : BEGIN -->
+                                            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="button-td button-td-primary" style="border-radius: 3px; background: #12848B">
+                                                            <a class="button-a button-a-primary" href="URL" style="background: #12848B; border: 1px solid #12848B; font-size: 19px; font-weight: bold; line-height: 24px; text-decoration: none; padding: 12px 25px; color: #ffffff; display: block; border-radius: 3px">Lire l'article</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!-- Button : END -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- Hero Image, Flush : END -->
+
+                    <!-- Clear Spacer : BEGIN -->
+                    <tr>
+                        <td aria-hidden="true" height="24" style="font-size: 0px; line-height: 0px;">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <!-- Clear Spacer : END -->
+                    
+                </tbody>
+            </table>
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+            <!-- Email Body : END -->
+
+            <!-- Email Footer : BEGIN -->
+           
+            <!-- Email Footer : END -->
+
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </center>
+</body>
+</html>
