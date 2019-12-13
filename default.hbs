@@ -31,6 +31,7 @@
                 <section class="copyright"><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
                 <nav class="site-footer-nav">
                     <a href="{{@site.url}}">Derniers articles</a>
+                    <a href="/presse">Dossier de presse</a>
                     {{#if @site.facebook}}<a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener">Facebook</a>{{/if}}
                     {{#if @site.twitter}}<a href="{{twitter_url @site.twitter}}" target="_blank" rel="noopener">Twitter</a>{{/if}}
                     <a href="https://www.linkedin.com/in/ericlarch/" target="_blank" rel="noopener">Linked In</a>
@@ -52,13 +53,13 @@
                 <img class="subscribe-overlay-logo" src="{{@site.logo}}" alt="{{@site.title}}" />
             {{/if}}
             <div class="subscribe-form">
-                <h1 class="subscribe-overlay-title">Abonnez-vous !</h1>
-                <p class="subscribe-overlay-description">Recevez tous les articles<br>immédiatement après leur parution.</p>
+                <h1 class="subscribe-overlay-title">Newsletter</h1>
+                <p class="subscribe-overlay-description">Inscrivez-vous pour recevoir les<br>dernières news du site !</p>
                 <form action="https://ericlarcheveque.us5.list-manage.com/subscribe/post-json?u=324ff765144b71f1ac40f04db&id=1bed7643e1&c=?" method="post" id="mc-embedded-subscribe-form-popup">
                     <div class="form-group">
                         <input class="subscribe-email" id="email-form-popup" name="EMAIL" type="email" placeholder="monemail@gmail.com" autocomplete="false" required/>
                         <button class="button primary" type="submit" id="submit-form-popup">
-                            <span class="button-content">S'abonner</span>
+                            <span class="button-content">S'inscrire</span>
                             <span class="button-loader">{{> "icons/loader"}}</span>
                         </button>
                     </div>

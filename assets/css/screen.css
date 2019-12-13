@@ -1531,6 +1531,12 @@ Usage (In Ghost editor):
     opacity: 0.6;
 }
 
+.post-follow-twitter {
+    margin-top: 6px;
+    margin-left: auto; 
+    margin-right: 0;
+}
+
 .author-avatar {
     display: block;
     overflow: hidden;
