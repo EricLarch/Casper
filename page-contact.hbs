@@ -40,6 +40,7 @@ into the {body} of the default.hbs template --}}
                         </label>
                         <textarea name="message" rows=10 required=""></textarea>
                         <input type="hidden" name="_gotcha">
+                        <div class="g-recaptcha" data-sitekey="6Lfy39IUAAAAAL2bwSwSeRbtbarGY7m8FBaMsdmV"></div>
                         <button class="button primary" type="submit">
                             <span class="button-content">Envoyer le message</span>
                             <span class="button-loader">{{> "icons/loader"}}</span>
@@ -52,7 +53,7 @@ into the {body} of the default.hbs template --}}
                         <div class="message-error">
                             <strong>Erreur !</strong> 
                             <br>
-                            Votre message n'a pas été transmis. Merci de réessayer plus tard.
+                            Votre message n'a pas été transmis. Merci de réessayer plus tard, ou assurez-vous d'avoir bien coché la case "je ne suis pas un robot".
                         </div>
                     </form>
                 </div>
@@ -68,6 +69,7 @@ into the {body} of the default.hbs template --}}
 
 {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
 {{#contentFor "scripts"}}
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script>
     $(function() {
         var $postContent = $(".post-full-content");
@@ -93,6 +95,11 @@ into the {body} of the default.hbs template --}}
                     } else {
                         $(".ajaxForm").addClass("error")
                     }
+                },
+                error: function(response){
+                    $("#send").attr("disabled", false);
+                    $(".ajaxForm").removeClass("loading");
+                    $(".ajaxForm").addClass("error")
                 }
             });
         });

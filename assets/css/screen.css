@@ -3311,4 +3311,8 @@ Usage (In Ghost editor):
     margin-top: 10px;
 }
 
+.g-recaptcha {
+    margin: auto;
+    margin-top: 30px;
+}
 
