@@ -1,8 +1,8 @@
 {
-    "name": "casper-eric",
+    "name": "casper-eric-v2",
     "description": "A clean, minimal default theme for the Ghost publishing platform",
     "demo": "https://demo.ghost.io",
-    "version": "3.0.3",
+    "version": "5.0.0",
     "engines": {
         "ghost": ">=3.0.0",
         "ghost-api": "v3"
